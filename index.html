@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandala-chart</title>
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+BE+VLG:wght@100..400&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h3 class="text-center m-3 playwrite-be-vlg-title">
+        Mandala-chart
+    </h3>
+
+    <p class="visible">
+        画面が小さすぎます。スマホの場合は、横にしてください。
+    </p>
+
+    <img src="assets\image\phone-side.jpg" alt="スマホを横向きに使っている画像" class="visible side-img">
+
+    <div class="container-fluid center-block mb-4 hidden playwrite-be-vlg-title" style="max-width: 900px;">
+        <div class="row" id="dynamicGrid"></div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById('dynamicGrid');
+            if (!container) return;
+
+            for (let i = 1; i < 10; i++) {
+                const colDiv = document.createElement('div');
+                colDiv.className = 'col-sm-4 col-xs-4 p-1 fadeUp';
+
+                const innerContainer = document.createElement('div');
+                innerContainer.className = 'container-fluid';
+
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'row';
+
+                for (let j = 1; j < 10; j++) {
+                    const cellDiv = document.createElement('div');
+                    cellDiv.className = 'col-4 p-0';
+
+                    const textarea = document.createElement('textarea');
+                    textarea.className = 'cell';
+                    textarea.id = `body${i}${j}`;
+                    textarea.cols = 5;
+                    textarea.rows = 2;
+                    textarea.wrap = 'soft';
+
+                    cellDiv.appendChild(textarea);
+                    rowDiv.appendChild(cellDiv);
+                }
+
+                innerContainer.appendChild(rowDiv);
+                colDiv.appendChild(innerContainer);
+                container.appendChild(colDiv);
+            }
+        });
+    </script>
+    <button id="pdf_print" class="btn btn-success print no-p mb-5 button-center hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+        </svg>
+        pdfで保存
+    </button>
+    </div>
+</body>
+<script>
+  for (let i = 1; i < 10; i++) {
+    document.addEventListener("DOMContentLoaded", function () {
+      var inTextarea1 = document.getElementById(`body5${i}`);
+      var outTextarea1 = document.getElementById(`body${i}5`);
+      
+      var inTextarea2 = document.getElementById(`body${i}5`);
+      var outTextarea2 = document.getElementById(`body5${i}`);
+      
+      inTextarea1.addEventListener("input", function () {
+          outTextarea1.value = inTextarea1.value;
+      });
+
+      inTextarea2.addEventListener("input", function () {
+          outTextarea2.value = inTextarea2.value;
+      });
+    });
+  }
+</script>
+
+<script>
+  var printButton = document.getElementById("pdf_print");
+  printButton.addEventListener("click", function() {
+    window.print();
+  });
+</script>
+
+</html>

@@ -1,0 +1,128 @@
+h3{
+  padding: 2rem 0;
+}
+
+.playwrite-be-vlg-title {
+  font-family: "Playwrite BE VLG", cursive;
+  font-optical-sizing: auto;
+  font-weight: 50px;
+  font-style: bold;
+}
+
+.row {
+  --bs-gutter-x: 0rem;
+}
+
+.cell {
+  background-color:white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 100%;
+  border-color: gray;
+}
+
+.cell#body15, .cell#body51{
+  background-color:#FBDAC8;
+}
+
+.cell#body25, .cell#body52{
+  background-color:#FEECD2;
+}
+
+.cell#body35, .cell#body53{
+  background-color:#FFFCDB;
+}
+
+.cell#body45, .cell#body54{
+  background-color:#D5EAD8;
+}
+
+.cell#body65, .cell#body56{
+  background-color:#D4ECEA;
+}
+
+.cell#body75, .cell#body57{
+  background-color:#D3EDFB;
+}
+
+.cell#body85, .cell#body58{
+  background-color:#FADBDA;
+}
+
+.cell#body95, .cell#body59{
+  background-color:#FADCE9;
+}
+
+.cell::-webkit-scrollbar{
+  display: none;
+}
+
+textarea {
+  width: 100%;
+  height: 75px;
+  line-height: 2;
+  padding: 20px 0px;
+  resize: none;
+}
+
+.btn{
+  display: block;
+  margin: auto;
+}
+
+.fadeUp{
+  animation-name:fadeUpAnime;
+  animation-duration:3s;
+  animation-fill-mode:forwards;
+  opacity:-10;
+}
+
+.side-img{
+  width:50%;
+  padding:auto;
+}
+
+.visible {
+  display: none;
+}
+
+@keyframes fadeUpAnime{
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media print{
+  @page{
+      margin: 0;
+  }
+  h3{
+    padding: 0;
+  }
+  .no-p {
+      display: none;
+  }
+}
+
+@media (max-width:575px) {
+  p{
+    text-align: center;
+  }
+  .visible {
+    margin: 0 auto;
+    padding: 2rem 0;
+    display: block;
+  }
+
+  .hidden {
+    display:none;
+  }
+}
